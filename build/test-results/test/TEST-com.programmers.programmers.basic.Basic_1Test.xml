@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.programmers.programmers.basic.Basic_1Test" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-01-06T01:44:03" hostname="LAPTOP-5919KAT7" time="0.02">
+  <properties/>
+  <testcase name="solution1()" classname="com.programmers.programmers.basic.Basic_1Test" time="0.02"/>
+  <system-out><![CDATA[Enter n: Enter m: Result: 1
+success 결과
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
