@@ -166,10 +166,71 @@ public class Basic_1 {
         System.out.println(Arrays.toString(arr));  // ans 배열 출력
     }
 
+    private void solution6(){
+        String answer = "";
+        String code = "abc1abc1abc";
+        int mode = 0;
+
+        for(int i=0; i < code.length(); i++){
+            char c = code.charAt(i);
+
+            if(mode == 0){
+                if(c != '1' && i % 2 == 0){
+                    answer = answer.concat(String.valueOf(c));
+                }else if(c == '1'){
+                    mode = 1;
+                }
+            }else{
+                if(c != '1' && i % 2 == 1){
+                    answer = answer.concat(String.valueOf(c));
+                }else if(c == '1'){
+                    mode = 0;
+                }
+            }
+        }
+        System.out.println("answer = " + answer);
+    }
+
+
+    /*
+        문제 설명
+        정수 l과 r이 주어졌을 때, l 이상 r이하의 정수 중에서 숫자 "0"과 "5"로만 이루어진 모든 정수를 오름차순으로 저장한 배열을 return 하는 solution 함수를 완성해 주세요.
+        만약 그러한 정수가 없다면, -1이 담긴 배열을 return 합니다.
+
+        제한사항
+        1 ≤ l ≤ r ≤ 1,000,000
+    */
+    private void solution7(){
+        int[] answer = {};
+        int l = 6;
+        int r = 10;
+
+        ArrayList<Integer> result = new ArrayList<>();
+
+        for(int i=l; i <= r; i++){
+            String num = Integer.toString(i);
+            boolean isValid = true;
+            for(char c : num.toCharArray()){
+                if(c != '5' && c!='0'){
+                    isValid = false;
+                    break;
+                }
+            }
+            if(isValid){
+                result.add(Integer.parseInt(num));
+            }
+        }
+
+        if(result.isEmpty()){
+            result.add(Integer.parseInt("-1"));
+        }
+        System.out.println("answer = " + result.toString());
+    }
+
     public static void main(String[] args) {
         Basic_1 a = new Basic_1();
 //        System.out.println(a.solution4(6,6,3,3));
-        a.solution5();
+        a.solution7();
     }
 
 
