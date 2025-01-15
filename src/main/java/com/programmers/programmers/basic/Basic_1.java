@@ -1,5 +1,9 @@
 package com.programmers.programmers.basic;
 import java.util.*;
+import java.util.stream.IntStream;
+import java.util.stream.Stream;
+
+import static org.apache.coyote.http11.Constants.a;
 
 public class Basic_1 {
 
@@ -227,10 +231,142 @@ public class Basic_1 {
         System.out.println("answer = " + result.toString());
     }
 
+    private void solution8(){
+        String[] order = {"cafelatte", "americanoice", "hotcafelatte", "anything"};
+
+        int americano = 0;
+        int latte = 0;
+        int sum = 0;
+
+        for (String o : order) {
+            if(o.contains("americano") || o.contains("anything")){
+                sum += 4500;
+            }
+            if(o.contains("latte")){
+                sum += 5000;
+            }
+        }
+
+        System.out.println("sum = " + sum);
+    }
+
+    private void solution9(){
+        int[] rank = {3, 7, 2, 5, 4, 6, 1};
+        boolean[] attendance ={false, true, true, true, true, false, false};
+        int[] sort = new int[rank.length];
+
+        for(int i=0; i < rank.length; i++){
+            if(attendance[i]){
+                sort[i] = rank[i];
+            }else{
+                rank[i] = Integer.MAX_VALUE;
+            }
+        }
+        
+        Arrays.sort(rank);
+
+        int sum = 0;
+        for(int j=0; j < sort.length; j++){
+            if(rank[0] == sort[j]){
+                sum += j * 10000;
+            }
+            if(rank[1] == sort[j]){
+                sum += j * 100;
+            }
+            if(rank[2] == sort[j]){
+                sum += j;
+            }
+        }
+        System.out.println("sum = " + sum);
+    }
+
+    public void solution10(){
+        int[]  array = {1, 1, 2, 3, 4, 5};
+        int n = 1;
+        int sum = 0;
+
+        for(int a : array){
+            sum += a == n ? 1 : 0;
+        }
+        System.out.println("sum = " + sum);
+    }
+
+    public void solution11(){
+        String num = "-1 1 2 3 4";
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+        String [] numArray = num.split(" ");
+        
+        for(String n : numArray){
+            int curValue = Integer.parseInt(n);
+            if(max < curValue){
+                max = curValue;
+            }
+            
+            if(curValue < min){
+                min = curValue;
+            }
+        }
+        
+        String result = min + " " + max;
+        System.out.println("result = " + result);
+
+    }
+
+    /**
+     * 최솟값 구하기
+     * int[] numA, int[] numB
+     * numA[i] x numB[j]의 곱의 합이 최솟값 구하기
+     * */
+    public void solution_makeMin(){
+        int[] numA = {1,4,2};
+        int[] numB = {5,4,4};
+        int sum = 0;
+
+        Arrays.sort(numA);
+        Arrays.sort(numB);
+
+        for(int i=0; i < numA.length ; i++){
+            sum = sum + (numA[i] * numB[numB.length-1-i]);
+        }
+        System.out.println("sum = " + sum);
+    }
+
+    public void solution_kakaoBrian(){
+        String sentence = "HaEaLaLaObWORLDb";
+        char [] s = {};
+        StringBuilder sb = new StringBuilder();
+        Set<Character> lowercaseSet = new HashSet<>();
+        char[] charSentence = sentence.toCharArray();
+
+        // 소문자만 Set에 추가
+        for (char c : charSentence) {
+            if (Character.isLowerCase(c)) {
+                lowercaseSet.add(c);
+            }
+        }
+
+        // Set에 있는 소문자들만 StringBuilder에 추가
+        for (char c : lowercaseSet) {
+            sb.append(c);
+        }
+
+        // 소문자 배열 생성
+        char[] lowerCharArray = sb.toString().toCharArray();
+
+        // 소문자들을 제거하고 그 자리에 공백을 넣음
+        for (char rm : lowerCharArray) {
+            sentence = sentence.replace(String.valueOf(rm), " " + rm);
+        }
+        System.out.println("sentence = " + sentence);
+
+
+    }
+
     public static void main(String[] args) {
         Basic_1 a = new Basic_1();
 //        System.out.println(a.solution4(6,6,3,3));
-        a.solution7();
+        a.solution_kakaoBrian();
     }
 
 
