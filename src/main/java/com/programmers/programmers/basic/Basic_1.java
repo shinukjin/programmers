@@ -1,9 +1,9 @@
 package com.programmers.programmers.basic;
-import java.util.*;
-import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
-import static org.apache.coyote.http11.Constants.a;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.Stack;
 
 public class Basic_1 {
 
@@ -262,7 +262,7 @@ public class Basic_1 {
                 rank[i] = Integer.MAX_VALUE;
             }
         }
-        
+
         Arrays.sort(rank);
 
         int sum = 0;
@@ -296,18 +296,18 @@ public class Basic_1 {
         int min = Integer.MAX_VALUE;
         int max = Integer.MIN_VALUE;
         String [] numArray = num.split(" ");
-        
+
         for(String n : numArray){
             int curValue = Integer.parseInt(n);
             if(max < curValue){
                 max = curValue;
             }
-            
+
             if(curValue < min){
                 min = curValue;
             }
         }
-        
+
         String result = min + " " + max;
         System.out.println("result = " + result);
 
@@ -332,41 +332,67 @@ public class Basic_1 {
         System.out.println("sum = " + sum);
     }
 
-    public void solution_kakaoBrian(){
-        String sentence = "HaEaLaLaObWORLDb";
-        char [] s = {};
-        StringBuilder sb = new StringBuilder();
-        Set<Character> lowercaseSet = new HashSet<>();
-        char[] charSentence = sentence.toCharArray();
+//    public void solution_kakaoBrian(){
+//        String sentence = "SpIpGpOpNpGJqOqA";
+//        StringBuilder sb = new StringBuilder();
+//        Set<Character> lowercaseSet = new HashSet<>();
+//        char[] charSentence = sentence.toCharArray();
+//
+//        // 소문자만 Set에 추가
+//        for (char c : charSentence) {
+//            if (Character.isLowerCase(c)) {
+//                lowercaseSet.add(c);
+//            }
+//            }
+//        // Set에 있는 소문자들만 StringBuilder에 추가
+//        for (char c : lowercaseSet) {
+//            sb.append(c);
+//        }
+//        // 소문자 배열 생성
+//        char[] lowerCharArray = sb.toString().toCharArray();
+//
+//        StringBuilder sb2 = new StringBuilder(sentence);
+//
+//        for(int j=0; j<lowerCharArray.length; j++){
+//
+//            if(j>0){
+//                int index = sb2.indexOf(String.valueOf(lowerCharArray[j]));
+//                System.out.println("index = " + index);
+//                sb2.insert(index, " ");
+//            }
+//            sb2 = new StringBuilder(sb2.toString().replace(String.valueOf(lowerCharArray[j]), ""));
+//        }
+//
+//        System.out.println("sentence = " + sb2);
+//
+//    }
 
-        // 소문자만 Set에 추가
-        for (char c : charSentence) {
-            if (Character.isLowerCase(c)) {
-                lowercaseSet.add(c);
+    public void solution12(String s){
+        // 스택을 사용하여 괄호의 짝을 맞추기
+        Stack<Character> stack = new Stack<>();
+
+        // 문자열을 순회하며 괄호를 처리
+        for (char ch : s.toCharArray()) {
+            // 열린 괄호 '('는 스택에 넣음
+            if (ch == '(') {
+                stack.push(ch);
+            }
+            // 닫힌 괄호 ')'는 스택에서 열린 괄호 '('를 하나 꺼냄
+            else if (ch == ')') {
+                // 스택이 비어 있으면 올바르지 않은 괄호임
+                if (stack.isEmpty()) {
+                    System.out.println("false = " + false);
+                }
+                stack.pop();  // 열린 괄호 '('를 스택에서 제거
             }
         }
-
-        // Set에 있는 소문자들만 StringBuilder에 추가
-        for (char c : lowercaseSet) {
-            sb.append(c);
-        }
-
-        // 소문자 배열 생성
-        char[] lowerCharArray = sb.toString().toCharArray();
-
-        // 소문자들을 제거하고 그 자리에 공백을 넣음
-        for (char rm : lowerCharArray) {
-            sentence = sentence.replace(String.valueOf(rm), " " + rm);
-        }
-        System.out.println("sentence = " + sentence);
-
-
+        System.out.println("stack.isEmpty() = " + stack.isEmpty());
     }
 
     public static void main(String[] args) {
         Basic_1 a = new Basic_1();
 //        System.out.println(a.solution4(6,6,3,3));
-        a.solution_kakaoBrian();
+//        a.solution_kakaoBrian();
     }
 
 
